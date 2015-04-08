@@ -20,7 +20,7 @@ add_filter( 'authenticate', function ( $user, $username, $password ) {
  
 add_filter( 'gettext', function ( $translated_text, $text, $domain ) {
 	global $pagenow;
-	if ( $pagenow != 'wp-login.php' ) { return $translated_text; }
+	if ( $pagenow != 'wp-login.php' || !empty( $_GET['action'] ) ) { return $translated_text; }
 	if ( $translated_text == 'Username' ) {
 		$translated_text .= ' '.__( 'or Email', $domain );
 	}
