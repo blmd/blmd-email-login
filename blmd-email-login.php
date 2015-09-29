@@ -1,12 +1,20 @@
 <?php
 /*
 Plugin Name: BLMD Email Login
-Plugin URI: http://github.com/blmd/blmd-email-login
+Plugin URI: https://github.com/blmd/blmd-email-login
 Description: Allow login using either username or email address
 Author: blmd
-Author URI: http://github.com/blmd
-Version: 0.1
+Author URI: https://github.com/blmd
+Version: 0.2
+
+GitHub Plugin URI: https://github.com/blmd/blmd-email-login
 */
+
+!defined( 'ABSPATH' ) && die;
+define( 'BLMD_EMAIL_LOGIN_VERSION', '0.2' );
+define( 'BLMD_EMAIL_LOGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'BLMD_EMAIL_LOGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'BLMD_EMAIL_LOGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 add_filter( 'authenticate', function ( $user, $username, $password ) {
 	if ( ! get_user_by( 'login', $username ) && is_email( $username ) ) {
